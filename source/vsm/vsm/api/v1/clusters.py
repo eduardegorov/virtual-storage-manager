@@ -344,17 +344,17 @@ def check_ceph_conf(ceph_conf_dict_old,ceph_conf_dict):
     if check_result:
         return check_result
     try:
-        osd_field_to_check = ["osd journal","devs","host","cluster addr","public addr"]
+        osd_field_to_check = ["osd_journal","devs","host","cluster_addr","public_addr"]
         for osd in new_osds:
             for field in osd_field_to_check:
                 if ceph_conf_dict[osd][field]!= ceph_conf_dict_old[osd][field]:
                    check_result = '%s\n.error:the value of %s below section %s'%(check_result,field,osd)
-        mon_field_to_check = ['mon addr','host']
+        mon_field_to_check = ['mon_addr','host']
         for mon in new_mons:
             for field in mon_field_to_check:
                 if ceph_conf_dict[mon][field]!= ceph_conf_dict_old[mon][field]:
                    check_result = '%s\n.error:the value of %s below section %s'%(check_result,field,mon)
-        mds_field_to_check = ['public addr','host']
+        mds_field_to_check = ['public_addr','host']
         for mds in new_mds:
             for field in mds_field_to_check:
                 if ceph_conf_dict[mds][field]!= ceph_conf_dict_old[mds][field]:

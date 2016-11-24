@@ -1285,7 +1285,7 @@ class SchedulerManager(manager.Manager):
         # else:
         #     pass
 
-        osd_fields = ['devs','host','cluster addr','public addr','osd journal']
+        osd_fields = ['devs','host','cluster_addr','public_addr','osd_journal']
         for osd in osd_list:
             osd_name = osd.keys()[0]
             fields_missing = set(osd_fields) - set(osd[osd_name].keys())
@@ -1293,7 +1293,7 @@ class SchedulerManager(manager.Manager):
                 message['code'].append('-24')
                 message['error'].append('missing field %s for %s in ceph configration file.'%(fields_missing,osd_name))
 
-        mon_fields = ['host','mon addr']
+        mon_fields = ['host','mon_addr']
         for mon in mon_list:
             mon_name = mon.keys()[0]
             fields_missing = set(mon_fields) - set(mon[mon_name].keys())

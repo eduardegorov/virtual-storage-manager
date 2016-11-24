@@ -80,9 +80,9 @@ class cephconf_discover():
             osd_settings += '[osd.%s]\n' %osd['id']
             osd_settings += 'host = %s\n' %osd['hostname']
             osd_settings += 'devs = %s\n' %osd['osd_data']
-            osd_settings += 'osd journal = %s\n' %osd['osd_journal']
-            osd_settings += 'cluster addr = %s\n' %osd['back_addr']
-            osd_settings += 'public addr = %s\n\n' %osd['front_addr']
+            osd_settings += 'osd_journal = %s\n' %osd['osd_journal']
+            osd_settings += 'cluster_addr = %s\n' %osd['back_addr']
+            osd_settings += 'public_addr = %s\n\n' %osd['front_addr']
 
         return osd_settings
 
@@ -101,7 +101,7 @@ class cephconf_discover():
         for mon in self.get_mons():
             mon_settings += '[mon.%s]\n' %mon['rank']
             mon_settings += 'host = %s\n' %mon['name']
-            mon_settings += 'mon addr = %s\n\n' %mon['addr']
+            mon_settings += 'mon_addr = %s\n\n' %mon['addr']
 
         return mon_settings
 

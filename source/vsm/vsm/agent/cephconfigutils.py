@@ -518,7 +518,7 @@ class CephConfigParser(manager.Manager):
         ips = ip.split(',')
         ip_strs = ['%s:%s' % (i, str(6789)) for i in ips]
         ip_str = ','.join(ip_strs)
-        self._parser.set(sec, 'mon addr', ip_str)
+        self._parser.set(sec, 'mon_addr', ip_str)
 
     def add_mds(self, hostname, ip, mds_id):
         sec = 'mds.%s' % mds_id
@@ -528,7 +528,7 @@ class CephConfigParser(manager.Manager):
         if not self._parser.has_section(sec):
             self._parser.add_section(sec)
         self._parser.set(sec, 'host', hostname)
-        self._parser.set(sec, 'public addr', '%s' % ip)
+        self._parser.set(sec, 'public_addr', '%s' % ip)
 
     def add_osd(self, hostname, pub_addr, cluster_addr, osd_dev, journal_dev, osd_id):
         sec = 'osd.%s' % osd_id
@@ -550,12 +550,12 @@ class CephConfigParser(manager.Manager):
         # a list or tuple of public ip
         if hasattr(pub_addr, '__iter__'):
             ip_str = ','.join([ip for ip in pub_addr])
-            self._parser.set(sec, 'public addr', ip_str)
+            self._parser.set(sec, 'public_addr', ip_str)
         else:
-            self._parser.set(sec, 'public addr', pub_addr)
+            self._parser.set(sec, 'public_addr', pub_addr)
 
-        self._parser.set(sec, 'cluster addr', cluster_addr)
-        self._parser.set(sec, 'osd journal', journal_dev)
+        self._parser.set(sec, 'cluster_addr', cluster_addr)
+        self._parser.set(sec, 'osd_journal', journal_dev)
         self._parser.set(sec, 'devs', osd_dev)
 
     def _remove_section(self, typ, num):
